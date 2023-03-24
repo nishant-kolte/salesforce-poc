@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="DB_Regression_Suite" >
+	<listeners>
+		<listener class-name="utilities.ListenerUtils"></listener>
+	</listeners>
+  
+	<test name="Test">
+			<parameter name="test_type" value="db"/>
+			<parameter name="environment" value="qa"/>
+<!--    		<groups>-->
+<!--    			<run>-->
+<!--    				<include name="ui"/>-->
+<!--    			</run>-->
+<!--    		</groups>-->
+    		<classes>
+      			<class name="db.EmployeeValidation.EmployeeTest"/>
+    		</classes>
+  	</test> <!-- Test -->
+</suite> <!-- DB_Regression_Suite-->
