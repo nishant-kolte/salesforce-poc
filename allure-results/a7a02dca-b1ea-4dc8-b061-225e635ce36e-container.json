@@ -1,0 +1,1 @@
+{"uuid":"a7a02dca-b1ea-4dc8-b061-225e635ce36e","name":"automation_poc-main","children":["53c1f290-33aa-4a39-bcd3-5237af1d37bf"],"befores":[],"afters":[{"name":"closeBrowser","status":"passed","stage":"finished","description":"","steps":[],"attachments":[],"parameters":[],"start":1679742448573,"stop":1679742448573}],"links":[],"start":1679742397580,"stop":1679742448574}
