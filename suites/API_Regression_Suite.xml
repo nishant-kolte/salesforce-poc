@@ -5,17 +5,17 @@
 		<listener class-name="utilities.ListenerUtils"></listener>
 	</listeners>
 	<test name="Test">
-			<parameter name="test_type" value="api"/>
+			<parameter name="test_type" value="tests.api"/>
 			<parameter name="environment" value="qa"/>
 <!--    		<groups>-->
 <!--    			<run>-->
-<!--    				<include name="ui"/>-->
+<!--    				<include name="tests.ui"/>-->
 <!--    			</run>-->
 <!--    		</groups>-->
     		<classes>
-      			<class name="api.postDataValidation.PostRequestTest"/>
-				<class name="api.putDataValidation.PutRequestTest"/>
-				<class name="api.getDataValidation.GetRequestTest"/>
+      			<class name="tests.api.postDataValidation.PostRequestTest"/>
+				<class name="tests.api.putDataValidation.PutRequestTest"/>
+				<class name="tests.api.getDataValidation.GetRequestTest"/>
 			</classes>
   	</test> <!-- Test -->
 </suite> <!-- API_Regression_Suite-->

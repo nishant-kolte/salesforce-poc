@@ -6,16 +6,16 @@
 	</listeners>
   
 	<test name="Test">
-		<parameter name="test_type" value="ui"/>
+		<parameter name="test_type" value="tests.ui"/>
     		<parameter name="browser" value="chrome"/>
 			<parameter name="environment" value="qa"/>
 <!--    		<groups>-->
 <!--    			<run>-->
-<!--    				<include name="ui"/>-->
+<!--    				<include name="tests.ui"/>-->
 <!--    			</run>-->
 <!--    		</groups>-->
     		<classes>
-      			<class name="ui.AccountTest"/>
+      			<class name="tests.ui.AccountTest"/>
     		</classes>
   	</test> <!-- Test -->
 </suite> <!-- UI_Automation_Smoke_Suite-->

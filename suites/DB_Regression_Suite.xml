@@ -10,11 +10,11 @@
 			<parameter name="environment" value="qa"/>
 <!--    		<groups>-->
 <!--    			<run>-->
-<!--    				<include name="ui"/>-->
+<!--    				<include name="tests.ui"/>-->
 <!--    			</run>-->
 <!--    		</groups>-->
     		<classes>
-      			<class name="db.EmployeeValidation.EmployeeTest"/>
+      			<class name="tests.db.EmployeeTest"/>
     		</classes>
   	</test> <!-- Test -->
 </suite> <!-- DB_Regression_Suite-->
