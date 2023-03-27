@@ -17,7 +17,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
-import static pages.AccountPage.categoryDropdown;
+
 
 public class Functions {
 	public static WebDriver driver= DriverInit.driver;
@@ -40,13 +40,13 @@ public class Functions {
 		locator.clear();
 		locator.sendKeys(value);
 	}
-	public static void mousehover(WebElement element) throws InterruptedException{
+	/*public static void mousehover(WebElement element) throws InterruptedException{
 		Thread.sleep(1000);
 		WebDriverWait wait = new WebDriverWait(driver,30);
 		wait.until(ExpectedConditions.elementToBeClickable(element));
 		Actions action = new Actions(driver);
 		action.moveToElement(element).build().perform();
-	}
+	}*/
 	public static void doubleClick(WebElement element) throws InterruptedException{
 		Thread.sleep(1000);
 		WebDriverWait wait = new WebDriverWait(driver,30);
@@ -89,17 +89,17 @@ public class Functions {
 	}
 
 
-	public static void dropDown(String value)
+	/*public static void dropDown(String value)
 	{
 	Select select=new Select(categoryDropdown);
 	select.selectByValue("2");
-		}
+		}*/
 
 
-		public static void initPageFactory(Class page)
+		/*public static void initPageFactory(Class page)
 		{
 			PageFactory.initElements(driver, page);
-		}
+		}*/
 
 	@Step("{0}")
 	public static void logStep(String message){

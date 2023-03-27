@@ -3,8 +3,10 @@ package ui;
 import io.qameta.allure.*;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.*;
+import pages.AccountInformationPage;
 import pages.HomePage;
 import pages.LoginPage;
+import pages.NewAccountPage;
 import utilities.DriverInit;
 import utilities.Functions;
 
@@ -24,7 +26,8 @@ public class HomePageTest extends DriverInit {
 	}
 	@AfterTest
 	public void closeBrowser() {
-//		driver.quit();
+
+		//driver.quit();
 	}
 	@Severity(SeverityLevel.CRITICAL)
 	@Story("story_id: 001 - successful login and navigate to patient account")
@@ -34,7 +37,21 @@ public class HomePageTest extends DriverInit {
 		login(testdata.getProperty("url"),testdata.getProperty("username"),testdata.getProperty("password"));
 		HomePage homePage = new HomePage();
 		Functions.waitForElementLoad(homePage.getNavigationButton());
-		homePage.clicknavigationButton();
+		homePage.clickNavigationButton();
+		homePage.clickAccountOption();
+		homePage.clickNewButton();
+		NewAccountPage newAccount = new NewAccountPage();
+		newAccount.selectPatientOption();
+		newAccount.clickNextButton();
+		AccountInformationPage accountInformationPage = new AccountInformationPage();
+		accountInformationPage.clickNextButton();
+		Functions.waitForElementLoad(AccountInformationPage.firstNameField);
+		accountInformationPage.enterUserData();
+		accountInformationPage.clickSaveButton();
+		accountInformationPage.verifySuccessMessage();
+//		accountInformationPage.deleteAccount();
+//		accountInformationPage.verifyDeleteMessage();
+		//homePage.clickLogout();
 	}
 
 //	@Severity(SeverityLevel.NORMAL)

@@ -8,7 +8,7 @@ import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.*;
 
-import pages.AccountPage;
+
 import pages.LoginPage;
 import pages.HomePage;
 import utilities.DriverInit;
@@ -27,7 +27,7 @@ public class LoginTest extends DriverInit {
 	}
 	@AfterTest
 	public void closeBrowser() {
-//		driver.quit();
+		driver.quit();
 	}
 	@Severity(SeverityLevel.CRITICAL)
 	@Story("story_id: 001 - successful login test")

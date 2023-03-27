@@ -16,8 +16,17 @@ public class HomePage {
 
 	@FindBy (xpath="//button[@title=\"Show Navigation Menu\"]")
 	public static WebElement navigationButton;
-	@FindBy (xpath="//a[@class='btn btn-black navbar-btn']")
+	@FindBy (xpath="//*[text()= 'Log Out']")
 	public static WebElement logout;
+
+	@FindBy (xpath="//*[contains(@class,'profileTrigger')]")
+	public static WebElement viewProfile;
+
+	@FindBy (xpath="//*[@href='/lightning/o/Account/home']")
+	public static WebElement accountOption;
+
+	@FindBy (xpath="//a[@title = 'New']")
+	public static WebElement newButton;
 
 	@Step("get navigation button")
 	public WebElement getNavigationButton()
@@ -25,11 +34,22 @@ public class HomePage {
 		return navigationButton;
 	}
 
-	public void clicknavigationButton() {
+	public void clickNavigationButton() throws InterruptedException {
+		Thread.sleep(1000);
 		navigationButton.click();
+
+	}
+	public void clickAccountOption(){
+		accountOption.click();
+	}
+
+	public void clickNewButton() throws InterruptedException{
+		Thread.sleep(3000);
+		newButton.click();
 	}
 
 	public void clickLogout(){
-		this.logout.click();
+		viewProfile.click();
+		logout.click();
 	}
 }
