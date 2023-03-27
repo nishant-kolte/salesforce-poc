@@ -3,6 +3,7 @@ package utilities;
 import io.qameta.allure.Attachment;
 import io.qameta.allure.Step;
 import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.io.FileHandler;
 import org.openqa.selenium.support.PageFactory;
 
@@ -36,6 +37,9 @@ public class CommonUtils {
 	}
 	public static WebElement element(By locator){
 		return driver.findElement(locator);
+	}
+	public static Actions actionObject(){
+		return new Actions(driver);
 	}
 
 	}

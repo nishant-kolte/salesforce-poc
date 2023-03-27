@@ -2,6 +2,7 @@ package pages;
 
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -37,6 +38,7 @@ public class AccountPage {
 	private By successMessage= By.xpath("//*[contains(text(),'Record was saved.')]");
 	private By contactNameHeader = By.xpath("//div[contains(text(),'Person Account')]/following::lightning-formatted-text");
 	private By deletePersonAccountPopup = By.xpath("//h2[text()='Delete Person Account']");
+	private By patientOption = By.xpath("//div[text() = 'Used for creating a patient account']");
 	private By popupDeleteButton = By.xpath("//div[@class=\"modal-footer slds-modal__footer\"]/descendant::button[@title='Delete']");
 	private String successDeleteMessage= "//span[contains(@class,'toastMessage') and contains(text(),'Account ')]";
 
@@ -74,6 +76,13 @@ public class AccountPage {
 		AppUtils.waitForElementPresent(element(contactRadioButton));
 		AppUtils.mousehover(element(contactRadioButton));
 		element(contactRadioButton).click();
+	}
+	@Step("Click on Patient radio button")
+	public void selectPatientOption(){
+		AppUtils.waitForElementPresent(element(patientOption));
+		JavascriptExecutor je = ((JavascriptExecutor) driver);
+		je.executeScript("arguments[0].scrollIntoView(true);",element(patientOption));
+		element(patientOption).click();
 	}
 
 	@Step("click on Next button")
