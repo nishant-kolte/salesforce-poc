@@ -143,7 +143,6 @@ public class AppUtils extends CommonUtils {
 		((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", inputtext);
 		inputtext.clear();
 		inputtext.sendKeys(value);
-		CommonUtils.logStepAsPassedInExtentReport(String.format("enter text '%s' in field '%s'",value,label));
 	}
 
 	@Step("select text '{0}' from dropdown field '{1}'")
@@ -160,7 +159,6 @@ public class AppUtils extends CommonUtils {
 //		((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", inputtext);
 		inputtext.click();
 //		setImplicitWait(Integer.parseInt(config.getProperty("default_timeout")));
-		CommonUtils.logStepAsPassedInExtentReport(String.format("select text '%s' from dropdown field '%s'",value,label));
 	}
 
 	@Step("select value '{0}' from input lookup '{1}'")
@@ -174,7 +172,6 @@ public class AppUtils extends CommonUtils {
 		waitForElementPresent(option);
 		option.click();
 //		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//lightning-base-combobox-formatted-text[contains(@title,\""+inputText+"\")])[1]"))).click();
-		CommonUtils.logStepAsPassedInExtentReport(String.format("select value '%s' from input lookup '%s'",inputText,label));
 	}
 
 	public static void waitForElementPresent(WebElement element){

@@ -18,7 +18,6 @@
         <maven.compiler.target>11</maven.compiler.target>
         <aspectj.version>1.9.9.1</aspectj.version>
         <maven.surefire.plugin.version>3.0.0-M5</maven.surefire.plugin.version>
-        <extentreports.version>2.41.2</extentreports.version>
     </properties>
 
     <dependencies>
@@ -42,12 +41,6 @@
 <!--            <version>4.0.0-alpha-7</version>-->
 <!--        </dependency>-->
 
-        <dependency>
-            <groupId>com.relevantcodes</groupId>
-            <artifactId>extentreports</artifactId>
-            <version>${extentreports.version}</version>
-<!--            <scope>compile</scope>-->
-        </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.testng/testng -->
         <dependency>

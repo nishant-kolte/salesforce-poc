@@ -27,19 +27,16 @@ public class LoginPage {
 	public void enterUsername(String username){
 		element(this.username).clear();
 		element(this.username).sendKeys(username);
-//		CommonUtils.logStepAsPassedInExtentReport(String.format("enter username %s",username));
 	}
 
 	@Step("enter password {0}")
 	public void enterPassword(String password){
 		element(this.password).clear();
 		element(this.password).sendKeys(password);
-//		CommonUtils.logStepAsPassedInExtentReport(String.format("enter password %s",password));
 	}
 
 	@Step("click login button")
 	public void clickLoginButton(){
 		element(this.LoginButton).click();
-//		CommonUtils.logStepAsPassedInExtentReport(String.format("click login button"));
 	}
 }

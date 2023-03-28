@@ -1,6 +1,5 @@
 package pages;
 
-import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -10,7 +9,6 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import utilities.AppUtils;
-import utilities.CommonUtils;
 
 import static utilities.CommonUtils.actionObject;
 import static utilities.CommonUtils.element;
@@ -31,32 +29,25 @@ public class AccountInformationPage {
 //    public static WebElement deleteAccountMessage;
 
 
-    @Step("click next button on Account Information Page")
+
     public void clickNextButton(){
         AppUtils.waitForElementPresent(element(nextButton));
         element(nextButton).click();
-        CommonUtils.logStepAsPassedInExtentReport(String.format("click next button on Account Information Page"));
     }
-    @Step("enter user data")
     public void enterUserData(){
        element(firstNameField).sendKeys("Abc");
         element(lastNameField).sendKeys("Xyz");
         //Actions actions = new Actions(driver);
         actionObject().click(element(insuranceStatusField)).sendKeys(Keys.ARROW_DOWN,Keys.ARROW_DOWN,Keys.ENTER).build().perform();
-        CommonUtils.logStepAsPassedInExtentReport(String.format("enter user data"));
     }
-    @Step("click on Save button")
     public void clickSaveButton(){
         element(saveRecordButton).click();
-        CommonUtils.logStepAsPassedInExtentReport(String.format("click on Save button"));
     }
-    @Step("verify success message once record is created created")
     public void verifySuccessMessage(){
         AppUtils.waitForElementPresent(element(successMessage));
         //waitForElementLoad(successMessage,"60");
         System.out.println(element(successMessage).getText());
         Assert.assertEquals(element(successMessage).getText(), "Record was saved.");
-        CommonUtils.logStepAsPassedInExtentReport(String.format("verify success message once record is created created"));
     }
 /*
     public void deleteAccount(){
