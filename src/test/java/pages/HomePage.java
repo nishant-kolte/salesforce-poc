@@ -36,6 +36,7 @@ public class HomePage {
 			AppUtils.waitForElementClickable(element(navigationButton));
 			AppUtils.jseClick(element(navigationButton));
 		}
+		CommonUtils.logStepAsPassedInExtentReport(String.format("click on navigation button dropdown"));
 	}
 
 	@Step("click on account option from navigation dropdown")
@@ -44,6 +45,7 @@ public class HomePage {
 		BaseTest.log.info("clicking account option button");
 		element(accountOption).click();
 		Thread.sleep(3000);
+		CommonUtils.logStepAsPassedInExtentReport(String.format("click on account option from navigation dropdown"));
 	}
 
 	@Step("verify ACTICS PRM and Env title displayed on the Home Page")
@@ -53,6 +55,7 @@ public class HomePage {
 		Assert.assertTrue(AppUtils.isElementDisplayed(element(envTitle)),"env title not displayed");
 		Assert.assertTrue(AppUtils.isElementDisplayed(element(ACTICStitle)),"ACTICS PRM title not displayed");
 //		BaseTest.log.info("title verified");
+		CommonUtils.logStepAsPassedInExtentReport(String.format("verify ACTICS PRM and Env title displayed on the Home Page"));
 	}
 
 	@Step("close all open tabs")
@@ -70,6 +73,7 @@ public class HomePage {
 		catch (Exception e){
 			BaseTest.log.info("no tabs open!");
 		}
+		CommonUtils.logStepAsPassedInExtentReport(String.format("close all open tabs"));
 	}
 
 

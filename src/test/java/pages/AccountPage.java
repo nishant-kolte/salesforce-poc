@@ -47,12 +47,14 @@ public class AccountPage {
 		BaseTest.log.info("clicking new button");
 //		AppUtils.mousehover(element(By.xpath(newButtonXpath)));
 		AppUtils.jseClick(element(By.xpath(newButtonXpath)));
+		CommonUtils.logStepAsPassedInExtentReport(String.format("click on new button"));
 	}
 
 	@Step("click next button on Account Information Page")
 	public void clickNextButton1() {
 		AppUtils.waitForElementPresent(element(nextButton1));
 		element(nextButton1).click();
+		CommonUtils.logStepAsPassedInExtentReport(String.format("click next button on Account Information Page"));
 	}
 
 	@Step("verify Account Page title is displayed")
@@ -61,12 +63,14 @@ public class AccountPage {
 		Assert.assertTrue(AppUtils.isElementDisplayed(element(AccountsSection)));
 		Assert.assertTrue(AppUtils.isElementDisplayed(element(recentlyViewedTitle)));
 		Assert.assertTrue(AppUtils.isElementDisplayed(element(newButton)));
+		CommonUtils.logStepAsPassedInExtentReport(String.format("verify Account Page title is displayed"));
 	}
 
 	@Step("verify New Account Page title is displayed")
 	public void verifyNewAccountTitleIsDisplayed() throws InterruptedException {
 		AppUtils.waitForElementPresent(element(newAccountTitle));
 		Assert.assertTrue(AppUtils.isElementDisplayed(element(newAccountTitle)));
+		CommonUtils.logStepAsPassedInExtentReport(String.format("verify New Account Page title is displayed"));
 	}
 
 	@Step("click on Contact radio button")
@@ -74,12 +78,14 @@ public class AccountPage {
 		AppUtils.waitForElementPresent(element(contactRadioButton));
 		AppUtils.mousehover(element(contactRadioButton));
 		element(contactRadioButton).click();
+		CommonUtils.logStepAsPassedInExtentReport(String.format("click on Contact radio button"));
 	}
 
 	@Step("click on Next button")
 	public void clickNext(){
 		AppUtils.waitForElementPresent(element(nextButton));
 		element(nextButton).click();
+		CommonUtils.logStepAsPassedInExtentReport(String.format("click on Next button"));
 	}
 
 	@Step("select value from contact input lookup")
@@ -89,6 +95,7 @@ public class AccountPage {
 		WebElement option = element(By.xpath("(//lightning-base-combobox-formatted-text[contains(@title,\""+inputText+"\")])[1]"));
 		AppUtils.waitForElementClickable(option);
 		option.click();
+		CommonUtils.logStepAsPassedInExtentReport(String.format("select value '%s' from contact input lookup",inputText));
 	}
 
 	@Step("update the contact details")
@@ -128,14 +135,16 @@ public class AccountPage {
 	@Step("click on Save button")
 	public void clickSaveButton() throws InterruptedException {
 		element(saveButton).click();
+		CommonUtils.logStepAsPassedInExtentReport(String.format("click on Save button"));
 	}
 
-	@Step("handle verify Address Alert")
+	@Step("click on Save button on Verify Address Popup")
 	public void handleVerifyAddressAlert() throws InterruptedException {
 		waitForElementPresent(element(verifyAddressModalHeader), 1, 200);
 		if(isElementDisplayed(element(verifyAddressModalHeader))){
 			jseClick(element(modalsaveButton));
 		}
+		CommonUtils.logStepAsPassedInExtentReport(String.format("click on Save button on Verify Address Popup"));
 	}
 
 	@Step("verify success message once record is created created")
@@ -145,6 +154,7 @@ public class AccountPage {
 		}
 		AppUtils.waitForElementPresent(element(successMessage));
 		Assert.assertTrue(isElementDisplayed(element(successMessage)));
+		CommonUtils.logStepAsPassedInExtentReport(String.format("verify success message once record is created created"));
 	}
 
 	@Step("delete Contact record")
@@ -154,6 +164,7 @@ public class AccountPage {
 		waitForElementPresent(element(deletePersonAccountPopup));
 		waitForElementClickable(element(popupDeleteButton));
 		jseClick(element(popupDeleteButton));
+		CommonUtils.logStepAsPassedInExtentReport(String.format("delete Contact record"));
 	}
 
 	@Step("verify success message once record is created created")
@@ -164,6 +175,7 @@ public class AccountPage {
 		WebElement message = element(By.xpath(successDeleteMessage));
 		AppUtils.waitForElementPresent(message);
 		Assert.assertEquals(message.getText(),"Account \""+contactname+"\" was deleted. Undo","successful delete message not displayed");
+		CommonUtils.logStepAsPassedInExtentReport(String.format("verify success message once record is created created"));
 	}
 	@Step("get name of the contact person from the Account tab")
 	public String getCreatedContactName() {
@@ -176,5 +188,6 @@ public class AccountPage {
 		WebElement contact = element(By.xpath(String.format(contactLink,expectedContactName)));
 		waitForElementPresent(contact);
 		jseClick(contact);
+		CommonUtils.logStepAsPassedInExtentReport(String.format("navigate to the contact account"));
 	}
 }
