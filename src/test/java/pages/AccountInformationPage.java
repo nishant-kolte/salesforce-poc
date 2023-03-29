@@ -41,7 +41,7 @@ public class AccountInformationPage {
     public void enterUserData() {
         element(firstNameField).sendKeys("Abc");
         element(lastNameField).sendKeys("Xyz");
-        element(dob).sendKeys(enterDOB("March",4,2001));
+        element(dob).sendKeys(enterDOB("04/03/2001"));
         //Actions actions = new Actions(driver);
         actionObject().click(element(insuranceStatusField)).sendKeys(Keys.ARROW_DOWN, Keys.ARROW_DOWN, Keys.ENTER).build().perform();
         CommonUtils.logStepAsPassedInExtentReport(String.format("enter user data"));
@@ -77,38 +77,39 @@ public class AccountInformationPage {
             Assert.assertEquals(deleteAccountMessage.getText(),"Account \"Abc Xyz\" was deleted. ");
         }
     */
-    public String enterDOB(String month, int day, int year) {
+    public String enterDOB(String dateOfBirth) { //dateOfBirth should be in dd/mm/yyyy
         String mon = "";
-        switch (month) {
+        String[] dateSplit = dateOfBirth.split("/",0);
+        switch (dateSplit[1]) {
 
-            case "January": mon = "Jan";
+            case "01": mon = "Jan";
             break;
-            case "February": mon = "Feb";
+            case "02": mon = "Feb";
             break;
-            case "March": mon = "Mar";
+            case "03": mon = "Mar";
             break;
-            case "April": mon = "Apr";
+            case "04": mon = "Apr";
             break;
-            case "May": mon = "May";
+            case "05": mon = "May";
             break;
-            case "June": mon = "Jun";
+            case "06": mon = "Jun";
             break;
-            case "July": mon = "Jul";
+            case "07": mon = "Jul";
             break;
-            case "August": mon = "Aug";
+            case "08": mon = "Aug";
             break;
-            case "September": mon = "Sep";
+            case "09": mon = "Sep";
             break;
-            case "October": mon = "Oct";
+            case "10": mon = "Oct";
             break;
-            case "November": mon = "Nov";
+            case "11": mon = "Nov";
             break;
-            case "December": mon = "Dec";
+            case "12": mon = "Dec";
             break;
             default : System.out.println("Invalid Month!");
 
         }
-        return mon+" "+day+", "+year;
+        return mon+" "+dateSplit[0]+", "+dateSplit[2];
 
 
 
