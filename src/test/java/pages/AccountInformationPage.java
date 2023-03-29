@@ -20,6 +20,8 @@ public class AccountInformationPage {
     private By insuranceStatusField= By.xpath("//button[@name='PHX_Insurance_Status__c']");
     private By saveRecordButton= By.xpath("//button[@name='saveRecord']");
     private By successMessage= By.xpath("//div[@data-key='success']/div/div/div/span");
+    private By dob= By.xpath("//input[@name='PatientConnect__PC_Date_of_Birth__c']");
+
 
 //    @FindBy(xpath="//button[@name='Delete']")
 //    public static WebElement deleteAccountButton;
@@ -39,6 +41,7 @@ public class AccountInformationPage {
     public void enterUserData(){
         element(firstNameField).sendKeys("Abc");
         element(lastNameField).sendKeys("Xyz");
+        element(dob).sendKeys(enterDOB("March",4,2001));
         //Actions actions = new Actions(driver);
         actionObject().click(element(insuranceStatusField)).sendKeys(Keys.ARROW_DOWN,Keys.ARROW_DOWN,Keys.ENTER).build().perform();
         CommonUtils.logStepAsPassedInExtentReport(String.format("enter user data"));
@@ -71,6 +74,42 @@ public class AccountInformationPage {
         Assert.assertEquals(deleteAccountMessage.getText(),"Account \"Abc Xyz\" was deleted. ");
     }
 */
+public String enterDOB(String month, int day, int year) {
+    String mon = "";
+    switch (month) {
+
+        case "January": mon = "Jan";
+            break;
+        case "February": mon = "Feb";
+            break;
+        case "March": mon = "Mar";
+            break;
+        case "April": mon = "Apr";
+            break;
+        case "May": mon = "May";
+            break;
+        case "June": mon = "Jun";
+            break;
+        case "July": mon = "Jul";
+            break;
+        case "August": mon = "Aug";
+            break;
+        case "September": mon = "Sep";
+            break;
+        case "October": mon = "Oct";
+            break;
+        case "November": mon = "Nov";
+            break;
+        case "December": mon = "Dec";
+            break;
+        default : System.out.println("Invalid Month!");
+
+    }
+    return mon+" "+day+", "+year;
+
+
+
+}
 
 
     }
