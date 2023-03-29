@@ -35,6 +35,13 @@ public class AppUtils extends CommonUtils {
 		jse.executeScript("arguments[0].click();", element);
 	}
 
+	//AK - 27/03/2023
+	public static void scrollIntoView(WebElement element) throws InterruptedException {
+		Thread.sleep(1000);
+		waitForElementLoad(element);
+		jse.executeScript("arguments[0].scrollIntoView(true)", element);
+	}
+
 	@Step("click on element - {0} with retry")
 	public void retryClick(WebElement ele, ExpectedCondition expectedCondition, int timeout) {
 		WebDriverWait wait = new WebDriverWait(driver, timeout);

@@ -26,6 +26,13 @@ public class HomePage {
 	By navigationButton = By.xpath("//span[contains(text(),\"Show Navigation Menu\")]/parent::button");
 	By accountOption = By.xpath("//li[@role=\"presentation\"]//descendant::a[@data-itemid=\"Account\"]");
 
+	//AK- 27/03/2023
+	By homeOption = By.xpath("//li[@role=\"presentation\"]//descendant::a[@data-itemid=\"Home\"]");
+	//AK- 27/03/2023
+	By tasksTab = By.xpath("//a[@role='tab'and text()='Tasks']");
+	//AK- 27/03/2023
+	By taskIconList = By.xpath("//lightning-icon[@class='slds-icon-utility-task slds-icon_container']");
+
 	By navMenuList = By.xpath("//div[@id=\"navMenuList\"]");
 	@Step("click on navigation button dropdown")
 	public void clicknavigationButton() throws InterruptedException {
@@ -72,7 +79,20 @@ public class HomePage {
 		}
 	}
 
+	//AK- 27/03/2023
+	@Step("click on home option from navigation dropdown")
+	public void clickHomeOption() throws InterruptedException {
+		AppUtils.waitForElementClickable(element(homeOption));
+		BaseTest.log.info("clicking home option button");
+		element(homeOption).click();
+		Thread.sleep(3000);
+	}
 
+	@Step("click on task in the tasks section")
+	public void clickTaskIcon() throws InterruptedException {
+		AppUtils.scrollIntoView(element(tasksTab));
+		CommonUtils.elements(taskIconList).get(0).click();
+	}
 
 
 }

@@ -8,6 +8,7 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 import static tests.ui.BaseTest.driver;
 
@@ -38,5 +39,10 @@ public class CommonUtils {
 		return driver.findElement(locator);
 	}
 
+	//AK- 27/03/2023
+	public static List<WebElement> elements(By locator){
+		return driver.findElements(locator);
 	}
+
+}
 
