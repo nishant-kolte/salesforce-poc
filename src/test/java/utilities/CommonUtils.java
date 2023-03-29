@@ -6,6 +6,7 @@ import io.qameta.allure.Attachment;
 import io.qameta.allure.Step;
 import io.qameta.allure.model.Status;
 import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.io.FileHandler;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
@@ -17,6 +18,10 @@ import static tests.ui.BaseTest.driver;
 
 
 public class CommonUtils {
+	public static Actions actionObject(){
+		return new Actions(driver);
+	}
+
 	public static void takescreenshot(String testname) throws IOException
 	{
 		File myfile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);

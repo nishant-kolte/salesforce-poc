@@ -2,6 +2,7 @@ package pages;
 
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -27,6 +28,7 @@ public class AccountPage {
 	private By recentlyViewedTitle= By.xpath("//h1/span[text()=\"Recently Viewed\"]");
 	private By newAccountTitle= By.xpath("//h2[text()=\"New Account\"]");
 	private By contactRadioButton= By.xpath("//input[@type='radio']/following-sibling::span[text()=\"Contact\"]");
+	private By patientOption = By.xpath("//div[text() = 'Used for creating a patient account']");
 	private By nextButton= By.xpath("//span[text()='Next']/parent::button");
 	private By nextButton1= By.xpath("//button[text()='Next']");
 	private By contactInputLookup= By.xpath("//label[text()='Person Account']/following-sibling::div/descendant::input");
@@ -79,6 +81,14 @@ public class AccountPage {
 		AppUtils.mousehover(element(contactRadioButton));
 		element(contactRadioButton).click();
 		CommonUtils.logStepAsPassedInExtentReport(String.format("click on Contact radio button"));
+	}
+	@Step("Click on Patient radio button")
+	public void selectPatientOption(){
+		AppUtils.waitForElementPresent(element(patientOption));
+		JavascriptExecutor je = ((JavascriptExecutor) driver);
+		je.executeScript("arguments[0].scrollIntoView(true);",element(patientOption));
+		element(patientOption).click();
+		CommonUtils.logStepAsPassedInExtentReport(String.format("click on Patient radio button"));
 	}
 
 	@Step("click on Next button")
