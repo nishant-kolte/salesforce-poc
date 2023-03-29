@@ -77,6 +77,7 @@ public class AppUtils extends CommonUtils {
 		action.doubleClick(element).build().perform();
 	}
 
+
 	@Step("verify element displayed")
 	public static void verifyElementDisplayed(WebElement element) throws InterruptedException{
 		Thread.sleep(1000);

@@ -13,6 +13,7 @@ import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
+import pages.AccountInformationPage;
 import pages.AccountPage;
 import pages.HomePage;
 import pages.LoginPage;
@@ -34,6 +35,7 @@ public class BaseTest {
     public static LoginPage loginPage;
     public static HomePage homePage;
     public static AccountPage accountPage;
+    public static AccountInformationPage accountInformationPage;
 
     @BeforeSuite
     @Parameters({"browser","environment"})
@@ -98,6 +100,7 @@ public class BaseTest {
         loginPage = new LoginPage();
         homePage = new HomePage();
         accountPage = new AccountPage();
+        accountInformationPage = new AccountInformationPage();
     }
     public void login(String url, String username, String password){
         openURL(url);
