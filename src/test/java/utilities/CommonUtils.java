@@ -5,6 +5,7 @@ import io.qameta.allure.Allure;
 import io.qameta.allure.Attachment;
 import io.qameta.allure.Step;
 import io.qameta.allure.model.Status;
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.io.FileHandler;
@@ -13,11 +14,14 @@ import org.testng.Assert;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import static tests.ui.BaseTest.driver;
 
 
 public class CommonUtils {
+	static String timestamp;
 	public static Actions actionObject(){
 		return new Actions(driver);
 	}
@@ -26,6 +30,20 @@ public class CommonUtils {
 	{
 		File myfile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
 		FileHandler.copy(myfile, new File(System.getProperty("user.dir")+"\\html-report\\"+testname+"fail.png"));
+	}
+
+	public static void takeScreenshot(String name) throws IOException
+	{
+		File myfile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+		FileHandler.copy(myfile, new File(System.getProperty("user.dir")+"\\html-report\\"+name+".png"));
+	}
+
+	public static void cleanHtmlReportFolder() throws Exception {
+//		String command = "cmd /c start cmd.exe /K ";
+//		Runtime rt = Runtime.getRuntime();
+//		Process proc = rt.exec(command);
+			File directory = new File(System.getProperty("user.dir")+"\\html-report");
+			FileUtils.cleanDirectory(directory);
 	}
 
 	@Attachment
@@ -50,6 +68,18 @@ public class CommonUtils {
 	public static void logStepAsPassedInExtentReport(String message){
 		ListenerUtils.test.log(LogStatus.PASS, "<font color=green>"+message);
 	}
+
+	public static void logStepAsPassedWithSreenshotInExtentReport(String message){
+		try{
+			timestamp = new SimpleDateFormat("yyyy_MM_dd_hh_mm_ss").format(new Date());
+			takeScreenshot("step_"+timestamp);
+			ListenerUtils.test.log(LogStatus.PASS, "<font color=green>"+message,ListenerUtils.test.addScreenCapture("step_"+timestamp+".png"));
+		}
+		catch (Exception e){
+			e.printStackTrace();
+		}
+	}
+
 	public static void logStepAsFailedInExtentReport(String message){
 		ListenerUtils.test.log(LogStatus.FAIL, "<font color=red>"+message);
 	}

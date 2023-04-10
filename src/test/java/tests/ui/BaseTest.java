@@ -39,7 +39,7 @@ public class BaseTest {
 
     @BeforeSuite
     @Parameters({"browser","environment"})
-    public void testInit(@Optional String browser,@Optional String env) throws IOException {
+    public void testInit(@Optional String browser,@Optional String env) throws Exception {
         PropertyConfigurator.configure("log4j.properties");
         log = Logger.getLogger(Test.class);
 

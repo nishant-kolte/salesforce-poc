@@ -6,7 +6,7 @@
     <artifactId>automation_poc_project</artifactId>
     <version>0.0.3-SNAPSHOT</version>
     <packaging>war</packaging>
-    <name>NishFramework3</name>
+    <name>nish_poc</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -30,17 +30,17 @@
             <version>${selenium.version}</version>
         </dependency>
 
-<!--        <dependency>-->
-<!--            <groupId>org.seleniumhq.selenium</groupId>-->
-<!--            <artifactId>selenium-java</artifactId>-->
-<!--            <version>4.0.0-alpha-7</version>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi</artifactId>
+            <version>5.0.0</version>
+        </dependency>
 
-<!--        <dependency>-->
-<!--            <groupId>org.seleniumhq.selenium</groupId>-->
-<!--            <artifactId>selenium-chrome-driver</artifactId>-->
-<!--            <version>4.0.0-alpha-7</version>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml</artifactId>
+            <version>5.0.0</version>
+        </dependency>
 
         <dependency>
             <groupId>com.relevantcodes</groupId>
