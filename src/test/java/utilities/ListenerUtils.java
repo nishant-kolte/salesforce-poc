@@ -19,9 +19,13 @@ public class ListenerUtils implements ITestListener {
     static ExtentReports report;
     public void onStart(ITestContext context) {
         String timestamp = new SimpleDateFormat("yyyy_MM_dd_hh_mm_ss").format(new Date());
-        report = new ExtentReports(System.getProperty("user.dir")+"\\html-report\\Automation_Execution_Report"+timestamp+".html");
-// report = new ExtentReports(System.getProperty("user.dir")+"\\html-report\\Automation_Execution_Report.html");
-        report.loadConfig(new File(System.getProperty("user.dir")+"\\html-report\\config.xml"));
+        try {
+            CommonUtils.cleanHtmlReportFolder();
+            report = new ExtentReports(System.getProperty("user.dir")+"\\html-report\\Automation_Execution_Report"+timestamp+".html");
+            report.loadConfig(new File(System.getProperty("user.dir")+"\\src\\test\\resources\\configs\\config.xml"));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void onFinish(ITestContext context) {
@@ -77,8 +81,5 @@ public class ListenerUtils implements ITestListener {
         test.log(LogStatus.SKIP,result.getInstanceName()+" : "+result.getName().replace("_"," ")+" -- SKIPPED");
         report.endTest(test);
     }
-
-
-
 
 }

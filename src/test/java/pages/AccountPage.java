@@ -1,20 +1,19 @@
 package pages;
 
 import io.qameta.allure.Step;
+import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import tests.ui.BaseTest;
 import utilities.AppUtils;
 import utilities.CommonUtils;
+import utilities.ExcelUtils;
 
-import java.awt.*;
+import java.io.IOException;
+import java.util.List;
+import java.util.Map;
 
 import static tests.ui.BaseTest.driver;
 import static tests.ui.BaseTest.log;
@@ -140,6 +139,41 @@ public class AccountPage {
 		AppUtils.enterTextInField(BaseTest.getTestData("city"),"City");
 		log.info("\"Zip Code\")");
 		AppUtils.enterTextInField(BaseTest.getTestData("zip_code"),"Zip Code");
+	}
+
+	public void updateContactDetails2() throws InterruptedException, IOException, InvalidFormatException {
+		ExcelUtils excelUtils = new ExcelUtils();
+		List<Map<String, String>> personContactData = excelUtils.getData(System.getProperty("user.dir")+"\\src\\test\\resources\\test_data\\QA_testdata.xlsx","CreateConactTest");
+		log.info("\"First Name\")");
+		AppUtils.enterTextInField(personContactData.get(0).get("contact_FN"),"First Name");
+		log.info("\"Middle Name\")");
+		AppUtils.enterTextInField(personContactData.get(0).get("contact_MN"),"Middle Name");
+		log.info("\"Last Name\")");
+		AppUtils.enterTextInField(personContactData.get(0).get("contact_LN"),"Last Name");
+		log.info("\"Role\")");
+		AppUtils.selectValueFromLookupField("Role",personContactData.get(0).get("role"));
+		log.info("\"Home Phone\")");
+		AppUtils.enterTextInField(personContactData.get(0).get("home_phone"),"Home Phone");
+		log.info("\"Mobile Phone\")");
+		AppUtils.enterTextInField(personContactData.get(0).get("mobile_phone"),"Mobile Phone");
+		log.info("\"Primary\")");
+		AppUtils.selectDropDownField(personContactData.get(0).get("primary"),"Primary");
+		log.info("\"Preferred Communication Channel\")");
+		AppUtils.selectDropDownField(personContactData.get(0).get("preferred_communication_channel"),"Preferred Communication Channel");
+		log.info("\"Preferred Contact Time\")");
+		AppUtils.selectDropDownField(personContactData.get(0).get("preferred_contact_time"),"Preferred Contact Time");
+		log.info("\"State\")");
+		AppUtils.selectDropDownField(personContactData.get(0).get("state"),"State");
+		log.info("\"Address 1\")");
+		AppUtils.enterTextInField(personContactData.get(0).get("address_1"),"Address 1");
+		log.info("\"Address 2\")");
+		AppUtils.enterTextInField(personContactData.get(0).get("address_2"),"Address 2");
+		log.info("\"Address 3\")");
+		AppUtils.enterTextInField(personContactData.get(0).get("address_3"),"Address 3");
+		log.info("\"City\")");
+		AppUtils.enterTextInField(personContactData.get(0).get("city"),"City");
+		log.info("\"Zip Code\")");
+		AppUtils.enterTextInField(personContactData.get(0).get("zip_code"),"Zip Code");
 	}
 
 	@Step("click on Save button")
